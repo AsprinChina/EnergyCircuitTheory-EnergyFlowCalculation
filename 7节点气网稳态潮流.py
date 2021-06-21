@@ -106,7 +106,7 @@ with context('基于能路的潮流计算'):
         p = np.array(p).reshape([-1,1])
         I = np.matmul(A.T, p).reshape(-1) + cp.reshape(-1) - (np.array(Ub).reshape([-1,1])*np.matmul(Ap.T, p)).reshape(-1)
         for i in range(numpipe):
-            I[i] = abs(I[i]*np.diag(yb)[i]/Apipe[i]/(np.matmul(Ap.T, p).reshape(-1))*c**2)[0]
+            I[i] = abs(I[i]*np.diag(yb)[i]/Apipe[i]/(np.matmul(Ap.T, p).reshape(-1)[i])*c**2)
         err.append(np.linalg.norm(I-v))
         print('第%d次迭代，失配误差为%.5f'%(itera+1, err[-1]))
         
