@@ -63,7 +63,7 @@ with context('稳态水力计算'):
                 E[i] += (kp1*mb[i]**2-kp3*w**2)
             if row.valve > 0:
                 kv, _, _, _ = tb3.loc['valve-%d'%int(row.valve),:]
-                R[i] += 2*kv*mb[i]**2
+                R[i] += 2*kv*mb[i]
                 E[i] -= -kv*mb[i]**2
         E = np.array(E).reshape([-1,1])
         yb = np.diag([1/Ri for Ri in R])
